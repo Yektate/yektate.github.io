@@ -3,15 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hoş Geldiniz</title>
+  <title>Idle Oyun</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light text-center">
   <main class="p-4">
-    <h1 class="display-4">Merhaba, dünya!</h1>
-    <p class="lead">Bu sayfa Bootstrap 5 ile hazırlanmıştır ve GitHub Pages üzerinde barındırılabilir.</p>
-    <a href="https://github.com/kullaniciadi" class="btn btn-primary mt-3">GitHub Profilim</a>
+    <h1 class="display-4">🪙 <span id="money">0</span> TL</h1>
+    <p class="lead">Her tıklamada para kazan. Otomatik gelir ile zengin ol!</p>
+
+    <button id="clickBtn" class="btn btn-success btn-lg mb-3">Tıkla +<span id="clickPower">1</span> TL</button>
+
+    <div class="mt-4">
+      <h4>Yükseltmeler</h4>
+      <button id="buyAuto" class="btn btn-warning mt-2">Otomatik Kazanç (5 TL) - Sahip: <span id="autoCount">0</span></button>
+    </div>
+
+    <a href="https://github.com/kullaniciadi" class="btn btn-primary mt-5">GitHub Profilim</a>
   </main>
+
+  <script>
+    let money = 0;
+    let clickPower = 1;
+    let autoCount = 0;
+    let autoIncome = 1;
+
+    const moneyDisplay = document.getElementById("money");
+    const clickBtn = document.getElementById("clickBtn");
+    const clickPowerDisplay = document.getElementById("clickPower");
+    const buyAutoBtn = document.getElementById("buyAuto");
+    const autoCountDisplay = document.getElementById("autoCount");
+
+    // Tıklama ile para kazan
+    clickBtn.addEventListener("click", () => {
+      money += clickPower;
+      updateDisplay();
+    });
+
+    // Otomatik kazanç satın alma
+    buyAutoBtn.addEventListener("click", () => {
+      const cost = 5;
+      if (money >= cost) {
+        money -= cost;
+        autoCount++;
+        updateDisplay();
+      }
+    });
+
+    // Otomatik gelir (her saniye)
+    setInterval(() => {
+      money += autoCount * autoIncome;
+      updateDisplay();
+    }, 1000);
+
+    function updateDisplay() {
+      moneyDisplay.textContent = money;
+      autoCountDisplay.textContent = autoCount;
+      clickPowerDisplay.textContent = clickPower;
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
