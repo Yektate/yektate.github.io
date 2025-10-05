@@ -1,67 +1,51 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Idle Oyun</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="d-flex justify-content-center align-items-center vh-100 bg-light text-center">
-  <main class="p-4">
-    <h1 class="display-4">🪙 <span id="money">0</span> TL</h1>
-    <p class="lead">Her tıklamada para kazan. Otomatik gelir ile zengin ol!</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kayıt Formu</title>
+  <!-- Bootstrap 5.3.8 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"></head>
+<body class="bg-light">
 
-    <button id="clickBtn" class="btn btn-success btn-lg mb-3">Tıkla +<span id="clickPower">1</span> TL</button>
-
-    <div class="mt-4">
-      <h4>Yükseltmeler</h4>
-      <button id="buyAuto" class="btn btn-warning mt-2">Otomatik Kazanç (5 TL) - Sahip: <span id="autoCount">0</span></button>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white text-center">
+            <h4>Kayıt Ol</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Ad Soyad</label>
+                <input type="text" class="form-control" id="name" placeholder="Adınızı girin" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">E-posta</label>
+                <input type="email" class="form-control" id="email" placeholder="ornek@mail.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Şifre</label>
+                <input type="password" class="form-control" id="password" placeholder="Şifrenizi girin" required>
+              </div>
+              <div class="mb-3">
+                <label for="confirm-password" class="form-label">Şifre (Tekrar)</label>
+                <input type="password" class="form-control" id="confirm-password" placeholder="Şifrenizi tekrar girin" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-center">
+            Zaten hesabınız var mı? <a href="#">Giriş Yap</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <a href="https://open.spotify.com/artist/1m8GVmkJ4WBUcP6sSWFVWC?si=fg2SZNhcSpuOl4IWSJ2HMw" class="btn btn-primary mt-5">Listen me on Spotify</a>
-  </main>
-
-  <script>
-    let money = 0;
-    let clickPower = 1;
-    let autoCount = 0;
-    let autoIncome = 1;
-
-    const moneyDisplay = document.getElementById("money");
-    const clickBtn = document.getElementById("clickBtn");
-    const clickPowerDisplay = document.getElementById("clickPower");
-    const buyAutoBtn = document.getElementById("buyAuto");
-    const autoCountDisplay = document.getElementById("autoCount");
-
-    // Tıklama ile para kazan
-    clickBtn.addEventListener("click", () => {
-      money += clickPower;
-      updateDisplay();
-    });
-
-    // Otomatik kazanç satın alma
-    buyAutoBtn.addEventListener("click", () => {
-      const cost = 5;
-      if (money >= cost) {
-        money -= cost;
-        autoCount++;
-        updateDisplay();
-      }
-    });
-
-    // Otomatik gelir (her saniye)
-    setInterval(() => {
-      money += autoCount * autoIncome;
-      updateDisplay();
-    }, 1000);
-
-    function updateDisplay() {
-      moneyDisplay.textContent = money;
-      autoCountDisplay.textContent = autoCount;
-      clickPowerDisplay.textContent = clickPower;
-    }
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  <!-- Bootstrap 5.3.8 JS CDN (Opsiyonel) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script></body>
 </html>
