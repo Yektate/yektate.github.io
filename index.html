@@ -64,7 +64,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script>
+    <script type="module">
         const supabase = createClient("https://umcxcofnlrtwuynrqgcw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtY3hjb2ZubHJ0d3V5bnJxZ2N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk1NTc2MzksImV4cCI6MjA3NTEzMzYzOX0.ub6HXsLH1w1BY2qfbgMNDUvCgckPQdmTbhGY1YPWy90")
         const { data, error } = await supabase
             .from("Uyelik")
